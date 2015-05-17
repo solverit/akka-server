@@ -1,1 +1,1 @@
-# Simple akka game server
+# Simple akka game server and client

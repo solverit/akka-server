@@ -81,24 +81,24 @@ class Session(
   def sendData(cmd: Int, data: Array[Byte]) {
     setLastWriteTime(System.currentTimeMillis())
 
-//    val trp: PacketMSG.Builder = PacketMSG.newBuilder()
-//    trp.setPing(false)
-//    trp.setEncrypted(false)
-//    trp.setTime(System.currentTimeMillis())
-//    trp.setIdsess(0)
-//    trp.setMsgnum(msgNum)
-//    trp.setCmd(cmd)
-//    trp.setData(com.google.protobuf.ByteString.copyFrom(data))
-//
-//    val packet = trp.build().toByteArray
-//
-//    val bb: ByteBuffer = ByteBuffer.allocate(4 + packet.length)
-//    bb.putInt(packet.length)
-//    bb.put(packet)
-//
-//    val msg: ByteString = ByteString(bb.array())
-//
-//    connect ! Write(msg)
+    //    val trp: PacketMSG.Builder = PacketMSG.newBuilder()
+    //    trp.setPing(false)
+    //    trp.setEncrypted(false)
+    //    trp.setTime(System.currentTimeMillis())
+    //    trp.setIdsess(0)
+    //    trp.setMsgnum(msgNum)
+    //    trp.setCmd(cmd)
+    //    trp.setData(com.google.protobuf.ByteString.copyFrom(data))
+    //
+    //    val packet = trp.build().toByteArray
+    //
+    //    val bb: ByteBuffer = ByteBuffer.allocate(4 + packet.length)
+    //    bb.putInt(packet.length)
+    //    bb.put(packet)
+    //
+    //    val msg: ByteString = ByteString(bb.array())
+    //
+    //    connect ! Write(msg)
 
     log.info("Cmd send: {}", cmd)
   }
