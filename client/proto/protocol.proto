@@ -1,0 +1,16 @@
+package ru.solverit.net.packet;
+
+option java_package = "ru.solverit.net.packet";
+option java_outer_classname = "Packet";
+
+message PacketMSG
+{
+  // base
+  required int64	time	= 1;
+  required int64	idsess	= 2;
+  required bool		ping	= 3;
+  
+  // data
+  optional int32	cmd    	= 4;
+  optional bytes	data    = 5;
+}
