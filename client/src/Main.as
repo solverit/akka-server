@@ -2,14 +2,10 @@ package {
 
 import away3d.containers.*;
 import away3d.controllers.*;
+import away3d.core.math.MathConsts;
 import away3d.debug.*;
 import away3d.entities.*;
-import away3d.events.*;
-import away3d.library.assets.*;
 import away3d.lights.*;
-import away3d.loaders.*;
-import away3d.loaders.misc.*;
-import away3d.loaders.parsers.*;
 import away3d.materials.*;
 import away3d.materials.lightpickers.*;
 import away3d.materials.methods.*;
@@ -19,19 +15,11 @@ import away3d.utils.*;
 import flash.display.*;
 import flash.events.*;
 import flash.geom.*;
+import flash.ui.Keyboard;
 import flash.utils.*;
 
-[SWF(backgroundColor="#000000", frameRate="30", quality="LOW")]
-
+[SWF(backgroundColor="#000000", frameRate="60", width="1280", height="800")]
 public class Main extends Sprite {
-
-    //solider ant texture
-    [Embed(source="/../embeds/soldier_ant.jpg")]
-    public static var AntTexture:Class;
-
-    //solider ant model
-    [Embed(source="/../embeds/soldier_ant.3ds",mimeType="application/octet-stream")]
-    public static var AntModel:Class;
 
     //ground texture
     [Embed(source="/../embeds/arid.jpg")]
@@ -40,10 +28,6 @@ public class Main extends Sprite {
     //engine variables
     private var _view:View3D;
     private var _cameraController:HoverController;
-
-    //signature variables
-    private var _signature:Sprite;
-    private var _signatureBitmap:Bitmap;
 
     //light objects
     private var _light:DirectionalLight;
@@ -54,8 +38,8 @@ public class Main extends Sprite {
     private var _groundMaterial:TextureMaterial;
 
     //scene objects
-    private var _loader:Loader3D;
     private var _ground:Mesh;
+    private var _player: Tank;
 
     //navigation variables
     private var _move:Boolean = false;
@@ -64,20 +48,25 @@ public class Main extends Sprite {
     private var _lastMouseX:Number;
     private var _lastMouseY:Number;
 
+    //movement variables
+    private var drag:Number = 0.5;
+    private var walkIncrement:Number = 2;
+    private var strafeIncrement:Number = 2;
+    private var walkSpeed:Number = 0;
+    private var strafeSpeed:Number = 0;
+    private var walkAcceleration:Number = 0;
+    private var strafeAcceleration:Number = 0;
+
     public function Main() {
         stage.scaleMode = StageScaleMode.NO_SCALE;
         stage.align = StageAlign.TOP_LEFT;
 
         //setup the view
         _view = new View3D();
-        _view.addSourceURL("srcview/index.html");
         addChild(_view);
 
         //setup the camera for optimal shadow rendering
-        _view.camera.lens.far = 2100;
-
-        //setup controller to be used on the camera
-        _cameraController = new HoverController(_view.camera, null, 45, 20, 1000, 10);
+        _view.camera.lens.far = 3000;
 
         //setup the lights for the scene
         _light = new DirectionalLight(-1, -1, 1);
@@ -85,26 +74,28 @@ public class Main extends Sprite {
         _lightPicker = new StaticLightPicker([_light]);
         _view.scene.addChild(_light);
 
-        //setup the url map for textures in the 3ds file
-        var assetLoaderContext:AssetLoaderContext = new AssetLoaderContext();
-        assetLoaderContext.mapUrlToData("texture.jpg", new AntTexture());
-
-        //setup materials
+        //setup ground
         _groundMaterial = new TextureMaterial(Cast.bitmapTexture(SandTexture));
         _groundMaterial.shadowMethod = new FilteredShadowMapMethod(_light);
         _groundMaterial.shadowMethod.epsilon = 0.2;
-        _groundMaterial.lightPicker = _lightPicker;
+//        _groundMaterial.lightPicker = _lightPicker;
         _groundMaterial.specular = 0;
+        _groundMaterial.repeat = true;
         _ground = new Mesh(new PlaneGeometry(1000, 1000), _groundMaterial);
+        _ground.geometry.scaleUV(10, 10);
         _view.scene.addChild(_ground);
 
-        //setup the scene
-        _loader = new Loader3D();
-        _loader.scale(300);
-        _loader.z = -200;
-        _loader.addEventListener(AssetEvent.ASSET_COMPLETE, onAssetComplete);
-        _loader.loadData(new AntModel(), assetLoaderContext, null, new Max3DSParser(false));
-        _view.scene.addChild(_loader);
+        //setup player
+        _player = new Tank();
+        _player.material.shadowMethod = new FilteredShadowMapMethod(_light);
+//        _player.material.shadowMethod.epsilon = 0.2;
+//        _player.material.lightPicker = _lightPicker;
+        _player.material.specular = 0;
+        _player.position = new Vector3D(0 , 0, 100);
+        _view.scene.addChild(_player);
+
+        //setup controller to be used on the camera
+        _cameraController = new HoverController(_view.camera, _player, 45, 20, 100, 10);
 
         //add stats panel
         addChild(new AwayStats(_view));
@@ -113,8 +104,56 @@ public class Main extends Sprite {
         addEventListener(Event.ENTER_FRAME, onEnterFrame);
         stage.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
         stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+        stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+        stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
         stage.addEventListener(Event.RESIZE, onResize);
         onResize();
+    }
+
+    /**
+     * Key down listener for camera control
+     */
+    private function onKeyDown(event:KeyboardEvent):void
+    {
+        switch (event.keyCode) {
+            case Keyboard.UP:
+            case Keyboard.W:
+                walkAcceleration = walkIncrement;
+                break;
+            case Keyboard.DOWN:
+            case Keyboard.S:
+                walkAcceleration = -walkIncrement;
+                break;
+            case Keyboard.LEFT:
+            case Keyboard.A:
+                strafeAcceleration = -strafeIncrement;
+                break;
+            case Keyboard.RIGHT:
+            case Keyboard.D:
+                strafeAcceleration = strafeIncrement;
+                break;
+        }
+    }
+
+    /**
+     * Key up listener for camera control
+     */
+    private function onKeyUp(event:KeyboardEvent):void
+    {
+        switch (event.keyCode) {
+            case Keyboard.UP:
+            case Keyboard.W:
+            case Keyboard.DOWN:
+            case Keyboard.S:
+                walkAcceleration = 0;
+                break;
+            case Keyboard.LEFT:
+            case Keyboard.A:
+            case Keyboard.RIGHT:
+            case Keyboard.D:
+                strafeAcceleration = 0;
+                break;
+        }
     }
 
     /**
@@ -127,30 +166,23 @@ public class Main extends Sprite {
             _cameraController.tiltAngle = 0.3*(stage.mouseY - _lastMouseY) + _lastTiltAngle;
         }
 
-        _direction.x = -Math.sin(getTimer()/4000);
-        _direction.z = -Math.cos(getTimer()/4000);
-        _light.direction = _direction;
+        if (walkSpeed || walkAcceleration) {
+            walkSpeed = (walkSpeed + walkAcceleration)*drag;
+            if (Math.abs(walkSpeed) < 0.01) {
+                walkSpeed = 0;
+            }
+            _player.z -= walkSpeed; //*Math.cos(_cameraController.panAngle*MathConsts.DEGREES_TO_RADIANS);
+        }
+
+        if (strafeSpeed || strafeAcceleration) {
+            strafeSpeed = (strafeSpeed + strafeAcceleration)*drag;
+            if (Math.abs(strafeSpeed) < 0.01) {
+                strafeSpeed = 0;
+            }
+            _player.x -= strafeSpeed; //*Math.sin(_cameraController.panAngle*MathConsts.DEGREES_TO_RADIANS);
+        }
 
         _view.render();
-    }
-
-    /**
-     * Listener function for asset complete event on loader
-     */
-    private function onAssetComplete(event:AssetEvent):void
-    {
-        if (event.asset.assetType == AssetType.MESH) {
-            var mesh:Mesh = event.asset as Mesh;
-            mesh.castsShadows = true;
-        } else if (event.asset.assetType == AssetType.MATERIAL) {
-            var material:TextureMaterial = event.asset as TextureMaterial;
-            material.shadowMethod = new FilteredShadowMapMethod(_light);
-            material.lightPicker = _lightPicker;
-            material.gloss = 30;
-            material.specular = 1;
-            material.ambientColor = 0x303040;
-            material.ambient = 1;
-        }
     }
 
     /**
@@ -191,7 +223,6 @@ public class Main extends Sprite {
     {
         _view.width = stage.stageWidth;
         _view.height = stage.stageHeight;
-        _signatureBitmap.y = stage.stageHeight - _signature.height;
     }
 }
 }
