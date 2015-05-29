@@ -21,6 +21,8 @@ import flash.utils.*;
 [SWF(backgroundColor="#000000", frameRate="60", width="1280", height="800")]
 public class Main extends Sprite {
 
+    public var net: NetService = new NetService();
+
     //ground texture
     [Embed(source="/../embeds/arid.jpg")]
     public static var SandTexture:Class;
@@ -152,6 +154,9 @@ public class Main extends Sprite {
             case Keyboard.RIGHT:
             case Keyboard.D:
                 strafeAcceleration = 0;
+                break;
+            case Keyboard.L:
+                net.connect("Tester1", "test");
                 break;
         }
     }

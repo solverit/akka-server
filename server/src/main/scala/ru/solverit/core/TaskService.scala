@@ -32,7 +32,7 @@ class TaskService extends Actor with ActorLogging {
   // ----- handles -----
   def handlePacket(task: CommandTask) = {
     task.comm.getCmd match {
-      case Cmd.Auth.code => authService ! AuthenticatePlayer(task.session, task.comm)
+      case Cmd.Auth.code => authService ! Authenticate(task.session, task.comm)
       case Cmd.Move.code => "move"
       case _ => log.info("Crazy message")
     }

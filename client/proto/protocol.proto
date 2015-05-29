@@ -6,11 +6,27 @@ option java_outer_classname = "Packet";
 message PacketMSG
 {
   // base
-  required int64	time	= 1;
-  required int64	idsess	= 2;
-  required bool		ping	= 3;
-  
+  optional bool		ping	= 1;
+
   // data
-  optional int32	cmd    	= 4;
-  optional bytes	data    = 5;
+  optional int32	cmd    	= 2;
+  optional bytes	data    = 3;
+}
+
+message Login
+{
+  required string	name   	= 1;
+  required string	pass   	= 2;
+}
+
+message LoginResp
+{
+  required int64	id  	= 1;
+}
+
+message Move
+{
+  required int64	id  	= 1;
+  required int32	x    	= 2;
+  required int32	y    	= 3;
 }

@@ -9,4 +9,3 @@ case object Cmd {
   case object AuthErr  extends Msg { val code = 7 }
   case object Move     extends Msg { val code = 8 }
 }
-

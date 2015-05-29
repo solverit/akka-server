@@ -6,8 +6,8 @@ import ru.solverit.net.packet.Packet.{LoginResp, PacketMSG}
 import ru.solverit.tcpfront.Send
 
 // -----
-case class AuthenticatePlayer(session: ActorRef, comm: PacketMSG)
-case class AuthenticatedPlayer(session: ActorRef, comm: PacketMSG, player: Player)
+case class Authenticate(session: ActorRef, comm: PacketMSG)
+//case class AuthenticatedPlayer(session: ActorRef, comm: PacketMSG, player: Player)
 case class AuthenticatedFailed(session: ActorRef, comm: PacketMSG)
 
 class AuthService extends Actor with ActorLogging {
@@ -22,7 +22,7 @@ class AuthService extends Actor with ActorLogging {
   }
 
   override def receive = {
-    case task: AuthenticatePlayer  => handleAuth(task)
+    case task: Authenticate  => handleAuth(task)
     case task: SomePlayer => handleAuthenticated(task)
     case task: AuthenticatedFailed => handleFailed(task)
 
@@ -36,7 +36,7 @@ class AuthService extends Actor with ActorLogging {
 
 
   // ----- handles -----
-  def handleAuth(task: AuthenticatePlayer) = {
+  def handleAuth(task: Authenticate) = {
     storageService ! GetPlayerByName(task.session, task.comm)
   }
 
