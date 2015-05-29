@@ -8,111 +8,222 @@ public final class Packet {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface PacketMSGOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // required int64 time = 1;
-    boolean hasTime();
-    long getTime();
-    
-    // required int64 idsess = 2;
-    boolean hasIdsess();
-    long getIdsess();
-    
-    // required bool ping = 3;
+  public interface PacketMSGOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ru.solverit.net.packet.PacketMSG)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional bool ping = 1;</code>
+     *
+     * <pre>
+     * base
+     * </pre>
+     */
     boolean hasPing();
+    /**
+     * <code>optional bool ping = 1;</code>
+     *
+     * <pre>
+     * base
+     * </pre>
+     */
     boolean getPing();
-    
-    // optional int32 cmd = 4;
+
+    /**
+     * <code>optional int32 cmd = 2;</code>
+     *
+     * <pre>
+     * data
+     * </pre>
+     */
     boolean hasCmd();
+    /**
+     * <code>optional int32 cmd = 2;</code>
+     *
+     * <pre>
+     * data
+     * </pre>
+     */
     int getCmd();
-    
-    // optional bytes data = 5;
+
+    /**
+     * <code>optional bytes data = 3;</code>
+     */
     boolean hasData();
+    /**
+     * <code>optional bytes data = 3;</code>
+     */
     com.google.protobuf.ByteString getData();
   }
+  /**
+   * Protobuf type {@code ru.solverit.net.packet.PacketMSG}
+   */
   public static final class PacketMSG extends
-      com.google.protobuf.GeneratedMessage
-      implements PacketMSGOrBuilder {
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ru.solverit.net.packet.PacketMSG)
+      PacketMSGOrBuilder {
     // Use PacketMSG.newBuilder() to construct.
-    private PacketMSG(Builder builder) {
+    private PacketMSG(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private PacketMSG(boolean noInit) {}
-    
+    private PacketMSG(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final PacketMSG defaultInstance;
     public static PacketMSG getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public PacketMSG getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PacketMSG(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              ping_ = input.readBool();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              cmd_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              data_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_PacketMSG_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_PacketMSG_fieldAccessorTable;
+      return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_PacketMSG_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              ru.solverit.net.packet.Packet.PacketMSG.class, ru.solverit.net.packet.Packet.PacketMSG.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<PacketMSG> PARSER =
+        new com.google.protobuf.AbstractParser<PacketMSG>() {
+      public PacketMSG parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PacketMSG(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PacketMSG> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
-    // required int64 time = 1;
-    public static final int TIME_FIELD_NUMBER = 1;
-    private long time_;
-    public boolean hasTime() {
+    public static final int PING_FIELD_NUMBER = 1;
+    private boolean ping_;
+    /**
+     * <code>optional bool ping = 1;</code>
+     *
+     * <pre>
+     * base
+     * </pre>
+     */
+    public boolean hasPing() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public long getTime() {
-      return time_;
-    }
-    
-    // required int64 idsess = 2;
-    public static final int IDSESS_FIELD_NUMBER = 2;
-    private long idsess_;
-    public boolean hasIdsess() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public long getIdsess() {
-      return idsess_;
-    }
-    
-    // required bool ping = 3;
-    public static final int PING_FIELD_NUMBER = 3;
-    private boolean ping_;
-    public boolean hasPing() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
+    /**
+     * <code>optional bool ping = 1;</code>
+     *
+     * <pre>
+     * base
+     * </pre>
+     */
     public boolean getPing() {
       return ping_;
     }
-    
-    // optional int32 cmd = 4;
-    public static final int CMD_FIELD_NUMBER = 4;
+
+    public static final int CMD_FIELD_NUMBER = 2;
     private int cmd_;
+    /**
+     * <code>optional int32 cmd = 2;</code>
+     *
+     * <pre>
+     * data
+     * </pre>
+     */
     public boolean hasCmd() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
+    /**
+     * <code>optional int32 cmd = 2;</code>
+     *
+     * <pre>
+     * data
+     * </pre>
+     */
     public int getCmd() {
       return cmd_;
     }
-    
-    // optional bytes data = 5;
-    public static final int DATA_FIELD_NUMBER = 5;
+
+    public static final int DATA_FIELD_NUMBER = 3;
     private com.google.protobuf.ByteString data_;
+    /**
+     * <code>optional bytes data = 3;</code>
+     */
     public boolean hasData() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
+    /**
+     * <code>optional bytes data = 3;</code>
+     */
     public com.google.protobuf.ByteString getData() {
       return data_;
     }
-    
+
     private void initFields() {
-      time_ = 0L;
-      idsess_ = 0L;
       ping_ = false;
       cmd_ = 0;
       data_ = com.google.protobuf.ByteString.EMPTY;
@@ -120,182 +231,150 @@ public final class Packet {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      if (!hasTime()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasIdsess()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasPing()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt64(1, time_);
+        output.writeBool(1, ping_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt64(2, idsess_);
+        output.writeInt32(2, cmd_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBool(3, ping_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, cmd_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(5, data_);
+        output.writeBytes(3, data_);
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, time_);
+          .computeBoolSize(1, ping_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(2, idsess_);
+          .computeInt32Size(2, cmd_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(3, ping_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, cmd_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, data_);
+          .computeBytesSize(3, data_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static ru.solverit.net.packet.Packet.PacketMSG parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static ru.solverit.net.packet.Packet.PacketMSG parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static ru.solverit.net.packet.Packet.PacketMSG parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static ru.solverit.net.packet.Packet.PacketMSG parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static ru.solverit.net.packet.Packet.PacketMSG parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static ru.solverit.net.packet.Packet.PacketMSG parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static ru.solverit.net.packet.Packet.PacketMSG parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static ru.solverit.net.packet.Packet.PacketMSG parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static ru.solverit.net.packet.Packet.PacketMSG parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static ru.solverit.net.packet.Packet.PacketMSG parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(ru.solverit.net.packet.Packet.PacketMSG prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code ru.solverit.net.packet.PacketMSG}
+     */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements ru.solverit.net.packet.Packet.PacketMSGOrBuilder {
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ru.solverit.net.packet.PacketMSG)
+        ru.solverit.net.packet.Packet.PacketMSGOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_PacketMSG_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_PacketMSG_fieldAccessorTable;
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_PacketMSG_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                ru.solverit.net.packet.Packet.PacketMSG.class, ru.solverit.net.packet.Packet.PacketMSG.Builder.class);
       }
-      
+
       // Construct using ru.solverit.net.packet.Packet.PacketMSG.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -306,35 +385,31 @@ public final class Packet {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
-        time_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        idsess_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000002);
         ping_ = false;
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000001);
         cmd_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000002);
         data_ = com.google.protobuf.ByteString.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return ru.solverit.net.packet.Packet.PacketMSG.getDescriptor();
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_PacketMSG_descriptor;
       }
-      
+
       public ru.solverit.net.packet.Packet.PacketMSG getDefaultInstanceForType() {
         return ru.solverit.net.packet.Packet.PacketMSG.getDefaultInstance();
       }
-      
+
       public ru.solverit.net.packet.Packet.PacketMSG build() {
         ru.solverit.net.packet.Packet.PacketMSG result = buildPartial();
         if (!result.isInitialized()) {
@@ -342,17 +417,7 @@ public final class Packet {
         }
         return result;
       }
-      
-      private ru.solverit.net.packet.Packet.PacketMSG buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        ru.solverit.net.packet.Packet.PacketMSG result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public ru.solverit.net.packet.Packet.PacketMSG buildPartial() {
         ru.solverit.net.packet.Packet.PacketMSG result = new ru.solverit.net.packet.Packet.PacketMSG(this);
         int from_bitField0_ = bitField0_;
@@ -360,28 +425,20 @@ public final class Packet {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.time_ = time_;
+        result.ping_ = ping_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.idsess_ = idsess_;
+        result.cmd_ = cmd_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
-        }
-        result.ping_ = ping_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.cmd_ = cmd_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
         }
         result.data_ = data_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof ru.solverit.net.packet.Packet.PacketMSG) {
           return mergeFrom((ru.solverit.net.packet.Packet.PacketMSG)other);
@@ -390,15 +447,9 @@ public final class Packet {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(ru.solverit.net.packet.Packet.PacketMSG other) {
         if (other == ru.solverit.net.packet.Packet.PacketMSG.getDefaultInstance()) return this;
-        if (other.hasTime()) {
-          setTime(other.getTime());
-        }
-        if (other.hasIdsess()) {
-          setIdsess(other.getIdsess());
-        }
         if (other.hasPing()) {
           setPing(other.getPing());
         }
@@ -411,202 +462,1824 @@ public final class Packet {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
-        if (!hasTime()) {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        ru.solverit.net.packet.Packet.PacketMSG parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (ru.solverit.net.packet.Packet.PacketMSG) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private boolean ping_ ;
+      /**
+       * <code>optional bool ping = 1;</code>
+       *
+       * <pre>
+       * base
+       * </pre>
+       */
+      public boolean hasPing() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional bool ping = 1;</code>
+       *
+       * <pre>
+       * base
+       * </pre>
+       */
+      public boolean getPing() {
+        return ping_;
+      }
+      /**
+       * <code>optional bool ping = 1;</code>
+       *
+       * <pre>
+       * base
+       * </pre>
+       */
+      public Builder setPing(boolean value) {
+        bitField0_ |= 0x00000001;
+        ping_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool ping = 1;</code>
+       *
+       * <pre>
+       * base
+       * </pre>
+       */
+      public Builder clearPing() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        ping_ = false;
+        onChanged();
+        return this;
+      }
+
+      private int cmd_ ;
+      /**
+       * <code>optional int32 cmd = 2;</code>
+       *
+       * <pre>
+       * data
+       * </pre>
+       */
+      public boolean hasCmd() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 cmd = 2;</code>
+       *
+       * <pre>
+       * data
+       * </pre>
+       */
+      public int getCmd() {
+        return cmd_;
+      }
+      /**
+       * <code>optional int32 cmd = 2;</code>
+       *
+       * <pre>
+       * data
+       * </pre>
+       */
+      public Builder setCmd(int value) {
+        bitField0_ |= 0x00000002;
+        cmd_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 cmd = 2;</code>
+       *
+       * <pre>
+       * data
+       * </pre>
+       */
+      public Builder clearCmd() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        cmd_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes data = 3;</code>
+       */
+      public boolean hasData() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional bytes data = 3;</code>
+       */
+      public com.google.protobuf.ByteString getData() {
+        return data_;
+      }
+      /**
+       * <code>optional bytes data = 3;</code>
+       */
+      public Builder setData(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        data_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes data = 3;</code>
+       */
+      public Builder clearData() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        data_ = getDefaultInstance().getData();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ru.solverit.net.packet.PacketMSG)
+    }
+
+    static {
+      defaultInstance = new PacketMSG(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:ru.solverit.net.packet.PacketMSG)
+  }
+
+  public interface LoginOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ru.solverit.net.packet.Login)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required string name = 1;</code>
+     */
+    boolean hasName();
+    /**
+     * <code>required string name = 1;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>required string name = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>required string pass = 2;</code>
+     */
+    boolean hasPass();
+    /**
+     * <code>required string pass = 2;</code>
+     */
+    java.lang.String getPass();
+    /**
+     * <code>required string pass = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getPassBytes();
+  }
+  /**
+   * Protobuf type {@code ru.solverit.net.packet.Login}
+   */
+  public static final class Login extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ru.solverit.net.packet.Login)
+      LoginOrBuilder {
+    // Use Login.newBuilder() to construct.
+    private Login(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private Login(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Login defaultInstance;
+    public static Login getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public Login getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Login(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              name_ = bs;
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              pass_ = bs;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Login_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Login_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              ru.solverit.net.packet.Packet.Login.class, ru.solverit.net.packet.Packet.Login.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Login> PARSER =
+        new com.google.protobuf.AbstractParser<Login>() {
+      public Login parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Login(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Login> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int NAME_FIELD_NUMBER = 1;
+    private java.lang.Object name_;
+    /**
+     * <code>required string name = 1;</code>
+     */
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string name = 1;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string name = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PASS_FIELD_NUMBER = 2;
+    private java.lang.Object pass_;
+    /**
+     * <code>required string pass = 2;</code>
+     */
+    public boolean hasPass() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string pass = 2;</code>
+     */
+    public java.lang.String getPass() {
+      java.lang.Object ref = pass_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          pass_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string pass = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPassBytes() {
+      java.lang.Object ref = pass_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        pass_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      name_ = "";
+      pass_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPass()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getPassBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getPassBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static ru.solverit.net.packet.Packet.Login parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static ru.solverit.net.packet.Packet.Login parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.Login parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static ru.solverit.net.packet.Packet.Login parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.Login parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static ru.solverit.net.packet.Packet.Login parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.Login parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static ru.solverit.net.packet.Packet.Login parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.Login parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static ru.solverit.net.packet.Packet.Login parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(ru.solverit.net.packet.Packet.Login prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ru.solverit.net.packet.Login}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ru.solverit.net.packet.Login)
+        ru.solverit.net.packet.Packet.LoginOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Login_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Login_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                ru.solverit.net.packet.Packet.Login.class, ru.solverit.net.packet.Packet.Login.Builder.class);
+      }
+
+      // Construct using ru.solverit.net.packet.Packet.Login.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        name_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        pass_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Login_descriptor;
+      }
+
+      public ru.solverit.net.packet.Packet.Login getDefaultInstanceForType() {
+        return ru.solverit.net.packet.Packet.Login.getDefaultInstance();
+      }
+
+      public ru.solverit.net.packet.Packet.Login build() {
+        ru.solverit.net.packet.Packet.Login result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public ru.solverit.net.packet.Packet.Login buildPartial() {
+        ru.solverit.net.packet.Packet.Login result = new ru.solverit.net.packet.Packet.Login(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.name_ = name_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.pass_ = pass_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof ru.solverit.net.packet.Packet.Login) {
+          return mergeFrom((ru.solverit.net.packet.Packet.Login)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(ru.solverit.net.packet.Packet.Login other) {
+        if (other == ru.solverit.net.packet.Packet.Login.getDefaultInstance()) return this;
+        if (other.hasName()) {
+          bitField0_ |= 0x00000001;
+          name_ = other.name_;
+          onChanged();
+        }
+        if (other.hasPass()) {
+          bitField0_ |= 0x00000002;
+          pass_ = other.pass_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasName()) {
           
           return false;
         }
-        if (!hasIdsess()) {
-          
-          return false;
-        }
-        if (!hasPing()) {
+        if (!hasPass()) {
           
           return false;
         }
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
+        ru.solverit.net.packet.Packet.Login parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (ru.solverit.net.packet.Packet.Login) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>required string name = 1;</code>
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string name = 1;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            name_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string name = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string name = 1;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string name = 1;</code>
+       */
+      public Builder clearName() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string name = 1;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object pass_ = "";
+      /**
+       * <code>required string pass = 2;</code>
+       */
+      public boolean hasPass() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string pass = 2;</code>
+       */
+      public java.lang.String getPass() {
+        java.lang.Object ref = pass_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            pass_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string pass = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPassBytes() {
+        java.lang.Object ref = pass_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          pass_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string pass = 2;</code>
+       */
+      public Builder setPass(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        pass_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string pass = 2;</code>
+       */
+      public Builder clearPass() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        pass_ = getDefaultInstance().getPass();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string pass = 2;</code>
+       */
+      public Builder setPassBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        pass_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ru.solverit.net.packet.Login)
+    }
+
+    static {
+      defaultInstance = new Login(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:ru.solverit.net.packet.Login)
+  }
+
+  public interface LoginRespOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ru.solverit.net.packet.LoginResp)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int64 id = 1;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>required int64 id = 1;</code>
+     */
+    long getId();
+  }
+  /**
+   * Protobuf type {@code ru.solverit.net.packet.LoginResp}
+   */
+  public static final class LoginResp extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ru.solverit.net.packet.LoginResp)
+      LoginRespOrBuilder {
+    // Use LoginResp.newBuilder() to construct.
+    private LoginResp(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private LoginResp(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final LoginResp defaultInstance;
+    public static LoginResp getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public LoginResp getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private LoginResp(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
+              done = true;
+              break;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
+                done = true;
               }
               break;
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              time_ = input.readInt64();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              idsess_ = input.readInt64();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              ping_ = input.readBool();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              cmd_ = input.readInt32();
-              break;
-            }
-            case 42: {
-              bitField0_ |= 0x00000010;
-              data_ = input.readBytes();
+              id_ = input.readInt64();
               break;
             }
           }
         }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
       }
-      
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_LoginResp_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_LoginResp_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              ru.solverit.net.packet.Packet.LoginResp.class, ru.solverit.net.packet.Packet.LoginResp.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<LoginResp> PARSER =
+        new com.google.protobuf.AbstractParser<LoginResp>() {
+      public LoginResp parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new LoginResp(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<LoginResp> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int ID_FIELD_NUMBER = 1;
+    private long id_;
+    /**
+     * <code>required int64 id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int64 id = 1;</code>
+     */
+    public long getId() {
+      return id_;
+    }
+
+    private void initFields() {
+      id_ = 0L;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt64(1, id_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, id_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static ru.solverit.net.packet.Packet.LoginResp parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static ru.solverit.net.packet.Packet.LoginResp parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.LoginResp parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static ru.solverit.net.packet.Packet.LoginResp parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.LoginResp parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static ru.solverit.net.packet.Packet.LoginResp parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.LoginResp parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static ru.solverit.net.packet.Packet.LoginResp parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.LoginResp parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static ru.solverit.net.packet.Packet.LoginResp parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(ru.solverit.net.packet.Packet.LoginResp prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ru.solverit.net.packet.LoginResp}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ru.solverit.net.packet.LoginResp)
+        ru.solverit.net.packet.Packet.LoginRespOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_LoginResp_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_LoginResp_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                ru.solverit.net.packet.Packet.LoginResp.class, ru.solverit.net.packet.Packet.LoginResp.Builder.class);
+      }
+
+      // Construct using ru.solverit.net.packet.Packet.LoginResp.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        id_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_LoginResp_descriptor;
+      }
+
+      public ru.solverit.net.packet.Packet.LoginResp getDefaultInstanceForType() {
+        return ru.solverit.net.packet.Packet.LoginResp.getDefaultInstance();
+      }
+
+      public ru.solverit.net.packet.Packet.LoginResp build() {
+        ru.solverit.net.packet.Packet.LoginResp result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public ru.solverit.net.packet.Packet.LoginResp buildPartial() {
+        ru.solverit.net.packet.Packet.LoginResp result = new ru.solverit.net.packet.Packet.LoginResp(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof ru.solverit.net.packet.Packet.LoginResp) {
+          return mergeFrom((ru.solverit.net.packet.Packet.LoginResp)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(ru.solverit.net.packet.Packet.LoginResp other) {
+        if (other == ru.solverit.net.packet.Packet.LoginResp.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        ru.solverit.net.packet.Packet.LoginResp parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (ru.solverit.net.packet.Packet.LoginResp) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
       private int bitField0_;
-      
-      // required int64 time = 1;
-      private long time_ ;
-      public boolean hasTime() {
+
+      private long id_ ;
+      /**
+       * <code>required int64 id = 1;</code>
+       */
+      public boolean hasId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public long getTime() {
-        return time_;
+      /**
+       * <code>required int64 id = 1;</code>
+       */
+      public long getId() {
+        return id_;
       }
-      public Builder setTime(long value) {
+      /**
+       * <code>required int64 id = 1;</code>
+       */
+      public Builder setId(long value) {
         bitField0_ |= 0x00000001;
-        time_ = value;
+        id_ = value;
         onChanged();
         return this;
       }
-      public Builder clearTime() {
+      /**
+       * <code>required int64 id = 1;</code>
+       */
+      public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        time_ = 0L;
+        id_ = 0L;
         onChanged();
         return this;
       }
-      
-      // required int64 idsess = 2;
-      private long idsess_ ;
-      public boolean hasIdsess() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      public long getIdsess() {
-        return idsess_;
-      }
-      public Builder setIdsess(long value) {
-        bitField0_ |= 0x00000002;
-        idsess_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearIdsess() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        idsess_ = 0L;
-        onChanged();
-        return this;
-      }
-      
-      // required bool ping = 3;
-      private boolean ping_ ;
-      public boolean hasPing() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      public boolean getPing() {
-        return ping_;
-      }
-      public Builder setPing(boolean value) {
-        bitField0_ |= 0x00000004;
-        ping_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearPing() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        ping_ = false;
-        onChanged();
-        return this;
-      }
-      
-      // optional int32 cmd = 4;
-      private int cmd_ ;
-      public boolean hasCmd() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      public int getCmd() {
-        return cmd_;
-      }
-      public Builder setCmd(int value) {
-        bitField0_ |= 0x00000008;
-        cmd_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearCmd() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        cmd_ = 0;
-        onChanged();
-        return this;
-      }
-      
-      // optional bytes data = 5;
-      private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
-      public boolean hasData() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      public com.google.protobuf.ByteString getData() {
-        return data_;
-      }
-      public Builder setData(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        data_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearData() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        data_ = getDefaultInstance().getData();
-        onChanged();
-        return this;
-      }
-      
-      // @@protoc_insertion_point(builder_scope:ru.solverit.net.packet.PacketMSG)
+
+      // @@protoc_insertion_point(builder_scope:ru.solverit.net.packet.LoginResp)
     }
-    
+
     static {
-      defaultInstance = new PacketMSG(true);
+      defaultInstance = new LoginResp(true);
       defaultInstance.initFields();
     }
-    
-    // @@protoc_insertion_point(class_scope:ru.solverit.net.packet.PacketMSG)
+
+    // @@protoc_insertion_point(class_scope:ru.solverit.net.packet.LoginResp)
   }
-  
-  private static com.google.protobuf.Descriptors.Descriptor
+
+  public interface MoveOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ru.solverit.net.packet.Move)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int64 id = 1;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>required int64 id = 1;</code>
+     */
+    long getId();
+
+    /**
+     * <code>required int32 x = 2;</code>
+     */
+    boolean hasX();
+    /**
+     * <code>required int32 x = 2;</code>
+     */
+    int getX();
+
+    /**
+     * <code>required int32 y = 3;</code>
+     */
+    boolean hasY();
+    /**
+     * <code>required int32 y = 3;</code>
+     */
+    int getY();
+  }
+  /**
+   * Protobuf type {@code ru.solverit.net.packet.Move}
+   */
+  public static final class Move extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ru.solverit.net.packet.Move)
+      MoveOrBuilder {
+    // Use Move.newBuilder() to construct.
+    private Move(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private Move(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Move defaultInstance;
+    public static Move getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public Move getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Move(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readInt64();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              x_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              y_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Move_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Move_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              ru.solverit.net.packet.Packet.Move.class, ru.solverit.net.packet.Packet.Move.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Move> PARSER =
+        new com.google.protobuf.AbstractParser<Move>() {
+      public Move parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Move(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Move> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int ID_FIELD_NUMBER = 1;
+    private long id_;
+    /**
+     * <code>required int64 id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int64 id = 1;</code>
+     */
+    public long getId() {
+      return id_;
+    }
+
+    public static final int X_FIELD_NUMBER = 2;
+    private int x_;
+    /**
+     * <code>required int32 x = 2;</code>
+     */
+    public boolean hasX() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 x = 2;</code>
+     */
+    public int getX() {
+      return x_;
+    }
+
+    public static final int Y_FIELD_NUMBER = 3;
+    private int y_;
+    /**
+     * <code>required int32 y = 3;</code>
+     */
+    public boolean hasY() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 y = 3;</code>
+     */
+    public int getY() {
+      return y_;
+    }
+
+    private void initFields() {
+      id_ = 0L;
+      x_ = 0;
+      y_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasX()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasY()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt64(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, x_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, y_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, x_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, y_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static ru.solverit.net.packet.Packet.Move parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static ru.solverit.net.packet.Packet.Move parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.Move parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static ru.solverit.net.packet.Packet.Move parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.Move parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static ru.solverit.net.packet.Packet.Move parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.Move parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static ru.solverit.net.packet.Packet.Move parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.Move parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static ru.solverit.net.packet.Packet.Move parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(ru.solverit.net.packet.Packet.Move prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ru.solverit.net.packet.Move}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ru.solverit.net.packet.Move)
+        ru.solverit.net.packet.Packet.MoveOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Move_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Move_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                ru.solverit.net.packet.Packet.Move.class, ru.solverit.net.packet.Packet.Move.Builder.class);
+      }
+
+      // Construct using ru.solverit.net.packet.Packet.Move.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        id_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        x_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        y_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Move_descriptor;
+      }
+
+      public ru.solverit.net.packet.Packet.Move getDefaultInstanceForType() {
+        return ru.solverit.net.packet.Packet.Move.getDefaultInstance();
+      }
+
+      public ru.solverit.net.packet.Packet.Move build() {
+        ru.solverit.net.packet.Packet.Move result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public ru.solverit.net.packet.Packet.Move buildPartial() {
+        ru.solverit.net.packet.Packet.Move result = new ru.solverit.net.packet.Packet.Move(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.x_ = x_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.y_ = y_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof ru.solverit.net.packet.Packet.Move) {
+          return mergeFrom((ru.solverit.net.packet.Packet.Move)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(ru.solverit.net.packet.Packet.Move other) {
+        if (other == ru.solverit.net.packet.Packet.Move.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (other.hasX()) {
+          setX(other.getX());
+        }
+        if (other.hasY()) {
+          setY(other.getY());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasId()) {
+          
+          return false;
+        }
+        if (!hasX()) {
+          
+          return false;
+        }
+        if (!hasY()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        ru.solverit.net.packet.Packet.Move parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (ru.solverit.net.packet.Packet.Move) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private long id_ ;
+      /**
+       * <code>required int64 id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int64 id = 1;</code>
+       */
+      public long getId() {
+        return id_;
+      }
+      /**
+       * <code>required int64 id = 1;</code>
+       */
+      public Builder setId(long value) {
+        bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 id = 1;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int x_ ;
+      /**
+       * <code>required int32 x = 2;</code>
+       */
+      public boolean hasX() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 x = 2;</code>
+       */
+      public int getX() {
+        return x_;
+      }
+      /**
+       * <code>required int32 x = 2;</code>
+       */
+      public Builder setX(int value) {
+        bitField0_ |= 0x00000002;
+        x_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 x = 2;</code>
+       */
+      public Builder clearX() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        x_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int y_ ;
+      /**
+       * <code>required int32 y = 3;</code>
+       */
+      public boolean hasY() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 y = 3;</code>
+       */
+      public int getY() {
+        return y_;
+      }
+      /**
+       * <code>required int32 y = 3;</code>
+       */
+      public Builder setY(int value) {
+        bitField0_ |= 0x00000004;
+        y_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 y = 3;</code>
+       */
+      public Builder clearY() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        y_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ru.solverit.net.packet.Move)
+    }
+
+    static {
+      defaultInstance = new Move(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:ru.solverit.net.packet.Move)
+  }
+
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ru_solverit_net_packet_PacketMSG_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ru_solverit_net_packet_PacketMSG_fieldAccessorTable;
-  
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ru_solverit_net_packet_Login_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ru_solverit_net_packet_Login_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ru_solverit_net_packet_LoginResp_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ru_solverit_net_packet_LoginResp_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ru_solverit_net_packet_Move_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ru_solverit_net_packet_Move_fieldAccessorTable;
+
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
@@ -615,32 +2288,50 @@ public final class Packet {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014packet.proto\022\026ru.solverit.net.packet\"R" +
-      "\n\tPacketMSG\022\014\n\004time\030\001 \002(\003\022\016\n\006idsess\030\002 \002(" +
-      "\003\022\014\n\004ping\030\003 \002(\010\022\013\n\003cmd\030\004 \001(\005\022\014\n\004data\030\005 \001" +
-      "(\014B \n\026ru.solverit.net.packetB\006Packet"
+      "\n\014packet.proto\022\026ru.solverit.net.packet\"4" +
+      "\n\tPacketMSG\022\014\n\004ping\030\001 \001(\010\022\013\n\003cmd\030\002 \001(\005\022\014" +
+      "\n\004data\030\003 \001(\014\"#\n\005Login\022\014\n\004name\030\001 \002(\t\022\014\n\004p" +
+      "ass\030\002 \002(\t\"\027\n\tLoginResp\022\n\n\002id\030\001 \002(\003\"(\n\004Mo" +
+      "ve\022\n\n\002id\030\001 \002(\003\022\t\n\001x\030\002 \002(\005\022\t\n\001y\030\003 \002(\005B \n\026" +
+      "ru.solverit.net.packetB\006Packet"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-      new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
-        public com.google.protobuf.ExtensionRegistry assignDescriptors(
-            com.google.protobuf.Descriptors.FileDescriptor root) {
-          descriptor = root;
-          internal_static_ru_solverit_net_packet_PacketMSG_descriptor =
-            getDescriptor().getMessageTypes().get(0);
-          internal_static_ru_solverit_net_packet_PacketMSG_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_ru_solverit_net_packet_PacketMSG_descriptor,
-              new java.lang.String[] { "Time", "Idsess", "Ping", "Cmd", "Data", },
-              ru.solverit.net.packet.Packet.PacketMSG.class,
-              ru.solverit.net.packet.Packet.PacketMSG.Builder.class);
-          return null;
-        }
-      };
+        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+          public com.google.protobuf.ExtensionRegistry assignDescriptors(
+              com.google.protobuf.Descriptors.FileDescriptor root) {
+            descriptor = root;
+            return null;
+          }
+        };
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
+    internal_static_ru_solverit_net_packet_PacketMSG_descriptor =
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_ru_solverit_net_packet_PacketMSG_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ru_solverit_net_packet_PacketMSG_descriptor,
+        new java.lang.String[] { "Ping", "Cmd", "Data", });
+    internal_static_ru_solverit_net_packet_Login_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_ru_solverit_net_packet_Login_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ru_solverit_net_packet_Login_descriptor,
+        new java.lang.String[] { "Name", "Pass", });
+    internal_static_ru_solverit_net_packet_LoginResp_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_ru_solverit_net_packet_LoginResp_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ru_solverit_net_packet_LoginResp_descriptor,
+        new java.lang.String[] { "Id", });
+    internal_static_ru_solverit_net_packet_Move_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_ru_solverit_net_packet_Move_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ru_solverit_net_packet_Move_descriptor,
+        new java.lang.String[] { "Id", "X", "Y", });
   }
-  
+
   // @@protoc_insertion_point(outer_class_scope)
 }

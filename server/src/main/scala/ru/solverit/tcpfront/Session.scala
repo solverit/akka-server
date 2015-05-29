@@ -8,15 +8,15 @@ import akka.io.Tcp
 import akka.io.Tcp.Write
 import akka.io.TcpPipelineHandler.{WithinActorContext, Init}
 import akka.util.ByteString
-import ru.solverit.core.CommandTask
+import ru.solverit.core.{Cmd, Msg, CommandTask}
 import ru.solverit.net.packet.Packet.PacketMSG
 
 import scala.concurrent.duration._
 
 // -----
-case class Send(cmd: Int, data: Array[Byte])
+case class Send(cmd: Msg, data: Array[Byte])
 
-case class Heartbeat()
+case object Heartbeat
 
 // -----
 class Session(
@@ -30,18 +30,11 @@ class Session(
   import context._
 
   // -----
-  val taskServer = context.actorSelection("akka://ags/user/task")
+  val taskService = context.actorSelection("akka://server/user/task")
 
-  // -----
-  var creationTime: Long = 0L
-  var lastReadTime: Long = 0L
-  var lastWriteTime: Long = 0L
-  var lastActivityTime: Long = 0L
-
-  // -----
+  // ----- heartbeat -----
   private val period = 10.seconds
   private var scheduler: Cancellable = _
-
 
   // ----- actor -----
   override def preStart() {
@@ -72,25 +65,17 @@ class Session(
 
   // ----- actions -----
   def receiveData(data: ByteString) {
-    setLastReadTime(System.currentTimeMillis())
-
     val comm: PacketMSG = PacketMSG.parseFrom( data.toArray )
 
-    taskServer ! CommandTask( self, comm )
+    taskService ! CommandTask( self, comm )
   }
 
-  def sendData(cmd: Int, data: Array[Byte]) {
-    setLastWriteTime(System.currentTimeMillis())
-
+  def sendData(cmd: Msg, data: Array[Byte]) {
     val trp: PacketMSG.Builder = PacketMSG.newBuilder()
-    trp.setPing(false)
-    trp.setTime(System.currentTimeMillis())
-    trp.setIdsess(id)
-    trp.setCmd(cmd)
+    trp.setCmd(cmd.code)
     trp.setData(com.google.protobuf.ByteString.copyFrom(data))
 
     val packet = trp.build().toByteArray
-
     val bb: ByteBuffer = ByteBuffer.allocate(4 + packet.length)
     bb.putInt(packet.length)
     bb.put(packet)
@@ -103,24 +88,12 @@ class Session(
   }
 
   def sendHeartbeat(): Unit = {
-    sendData(1, Array[Byte]())
+    sendData(Cmd.Ping, Array[Byte]())
   }
 
   def Closed() {
     context stop self
   }
-
-
-  def setLastReadTime(time: Long) {
-    lastActivityTime = time
-    lastReadTime = time
-  }
-
-  def setLastWriteTime(time: Long) {
-    lastActivityTime = time
-    lastWriteTime = time
-  }
-
 
   // ----- override -----
   override def toString = "{ Id: %d }".format(id)

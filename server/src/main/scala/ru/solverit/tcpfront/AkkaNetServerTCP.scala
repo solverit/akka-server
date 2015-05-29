@@ -10,7 +10,7 @@ import akka.io.Tcp._
 
 
 class AkkaNetServerTCP(address: String, port: Int) extends Actor with ActorLogging {
-  val idCounter: AtomicLong = new AtomicLong(0)
+  var idCounter = 0L
 
   override def preStart() {
     log.info("Starting tcp net server")
@@ -34,7 +34,8 @@ class AkkaNetServerTCP(address: String, port: Int) extends Actor with ActorLoggi
 
       val connection = sender
 
-      val sessact = Props(new Session(idCounter.incrementAndGet(), connection, init, remote, local))
+      idCounter += 1
+      val sessact = Props(new Session(idCounter, connection, init, remote, local))
       val sess = context.actorOf(sessact, remote.toString.replace("/", ""))
 
       val pipeline = context.actorOf(TcpPipelineHandler.props(init, connection, sess))
