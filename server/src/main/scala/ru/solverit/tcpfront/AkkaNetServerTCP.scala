@@ -32,14 +32,12 @@ class AkkaNetServerTCP(address: String, port: Int) extends Actor with ActorLoggi
       val framer = new LengthFieldFrame(8192, ByteOrder.BIG_ENDIAN, 4, false)
       val init = TcpPipelineHandler.withLogger(log, framer >> new TcpReadWriteAdapter)
 
-      val connection = sender
-
       idCounter += 1
-      val sessact = Props(new Session(idCounter, connection, init, remote, local))
+      val sessact = Props(new Session(idCounter, sender, init, remote, local))
       val sess = context.actorOf(sessact, remote.toString.replace("/", ""))
 
-      val pipeline = context.actorOf(TcpPipelineHandler.props(init, connection, sess))
+      val pipeline = context.actorOf(TcpPipelineHandler.props(init, sender, sess))
 
-      connection ! Register(pipeline)
+      sender ! Register(pipeline)
   }
 }

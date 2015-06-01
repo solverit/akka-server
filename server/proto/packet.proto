@@ -24,9 +24,18 @@ message LoginResp
   required int64	id  	= 1;
 }
 
-message Move
+message Join
+{
+}
+
+message Point
 {
   required int64	id  	= 1;
   required int32	x    	= 2;
   required int32	y    	= 3;
+}
+
+message Move
+{
+  repeated Point	point  	= 1;
 }

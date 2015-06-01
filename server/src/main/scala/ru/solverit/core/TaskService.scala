@@ -1,6 +1,7 @@
 package ru.solverit.core
 
 import akka.actor.{ActorRef, ActorLogging, Actor}
+import ru.solverit.game.{PlayerMove, JoinGame}
 import ru.solverit.net.packet.Packet.PacketMSG
 
 
@@ -11,6 +12,7 @@ class TaskService extends Actor with ActorLogging {
 
   // -----
   val authService = context.actorSelection("akka://server/user/auth")
+  val gameService = context.actorSelection("akka://server/user/game")
 
   // ----- actor -----
   override def preStart() {
@@ -33,7 +35,8 @@ class TaskService extends Actor with ActorLogging {
   def handlePacket(task: CommandTask) = {
     task.comm.getCmd match {
       case Cmd.Auth.code => authService ! Authenticate(task.session, task.comm)
-      case Cmd.Move.code => "move"
+      case Cmd.Join.code => gameService ! JoinGame(task.session)
+      case Cmd.Move.code => gameService ! PlayerMove(task.session, task.comm)
       case _ => log.info("Crazy message")
     }
   }

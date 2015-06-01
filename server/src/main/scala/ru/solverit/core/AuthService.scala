@@ -7,14 +7,14 @@ import ru.solverit.tcpfront.Send
 
 // -----
 case class Authenticate(session: ActorRef, comm: PacketMSG)
-//case class AuthenticatedPlayer(session: ActorRef, comm: PacketMSG, player: Player)
 case class AuthenticatedFailed(session: ActorRef, comm: PacketMSG)
 
 class AuthService extends Actor with ActorLogging {
 
   // -----
-  val taskService = context.actorSelection("akka://server/user/task")
   val storageService = context.actorSelection("akka://server/user/storage")
+  val taskService = context.actorSelection("akka://server/user/task")
+  val gameService = context.actorSelection("akka://server/user/game")
 
   // ----- actor -----
   override def preStart() {
@@ -44,6 +44,7 @@ class AuthService extends Actor with ActorLogging {
     val login: LoginResp.Builder = LoginResp.newBuilder()
     login.setId(task.player.id)
     task.session ! Send(Cmd.AuthResp, login.build().toByteArray)
+    gameService ! task
   }
 
   def handleFailed(task: AuthenticatedFailed) = {

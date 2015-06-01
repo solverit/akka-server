@@ -1682,8 +1682,321 @@ public final class Packet {
     // @@protoc_insertion_point(class_scope:ru.solverit.net.packet.LoginResp)
   }
 
-  public interface MoveOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ru.solverit.net.packet.Move)
+  public interface JoinOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ru.solverit.net.packet.Join)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code ru.solverit.net.packet.Join}
+   */
+  public static final class Join extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ru.solverit.net.packet.Join)
+      JoinOrBuilder {
+    // Use Join.newBuilder() to construct.
+    private Join(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private Join(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Join defaultInstance;
+    public static Join getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public Join getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Join(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Join_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Join_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              ru.solverit.net.packet.Packet.Join.class, ru.solverit.net.packet.Packet.Join.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Join> PARSER =
+        new com.google.protobuf.AbstractParser<Join>() {
+      public Join parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Join(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Join> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static ru.solverit.net.packet.Packet.Join parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static ru.solverit.net.packet.Packet.Join parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.Join parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static ru.solverit.net.packet.Packet.Join parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.Join parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static ru.solverit.net.packet.Packet.Join parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.Join parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static ru.solverit.net.packet.Packet.Join parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.Join parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static ru.solverit.net.packet.Packet.Join parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(ru.solverit.net.packet.Packet.Join prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ru.solverit.net.packet.Join}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ru.solverit.net.packet.Join)
+        ru.solverit.net.packet.Packet.JoinOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Join_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Join_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                ru.solverit.net.packet.Packet.Join.class, ru.solverit.net.packet.Packet.Join.Builder.class);
+      }
+
+      // Construct using ru.solverit.net.packet.Packet.Join.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Join_descriptor;
+      }
+
+      public ru.solverit.net.packet.Packet.Join getDefaultInstanceForType() {
+        return ru.solverit.net.packet.Packet.Join.getDefaultInstance();
+      }
+
+      public ru.solverit.net.packet.Packet.Join build() {
+        ru.solverit.net.packet.Packet.Join result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public ru.solverit.net.packet.Packet.Join buildPartial() {
+        ru.solverit.net.packet.Packet.Join result = new ru.solverit.net.packet.Packet.Join(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof ru.solverit.net.packet.Packet.Join) {
+          return mergeFrom((ru.solverit.net.packet.Packet.Join)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(ru.solverit.net.packet.Packet.Join other) {
+        if (other == ru.solverit.net.packet.Packet.Join.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        ru.solverit.net.packet.Packet.Join parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (ru.solverit.net.packet.Packet.Join) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ru.solverit.net.packet.Join)
+    }
+
+    static {
+      defaultInstance = new Join(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:ru.solverit.net.packet.Join)
+  }
+
+  public interface PointOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ru.solverit.net.packet.Point)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -1714,25 +2027,25 @@ public final class Packet {
     int getY();
   }
   /**
-   * Protobuf type {@code ru.solverit.net.packet.Move}
+   * Protobuf type {@code ru.solverit.net.packet.Point}
    */
-  public static final class Move extends
+  public static final class Point extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:ru.solverit.net.packet.Move)
-      MoveOrBuilder {
-    // Use Move.newBuilder() to construct.
-    private Move(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:ru.solverit.net.packet.Point)
+      PointOrBuilder {
+    // Use Point.newBuilder() to construct.
+    private Point(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private Move(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private Point(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final Move defaultInstance;
-    public static Move getDefaultInstance() {
+    private static final Point defaultInstance;
+    public static Point getDefaultInstance() {
       return defaultInstance;
     }
 
-    public Move getDefaultInstanceForType() {
+    public Point getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -1742,7 +2055,7 @@ public final class Packet {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private Move(
+    private Point(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1794,28 +2107,28 @@ public final class Packet {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Move_descriptor;
+      return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Point_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Move_fieldAccessorTable
+      return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Point_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ru.solverit.net.packet.Packet.Move.class, ru.solverit.net.packet.Packet.Move.Builder.class);
+              ru.solverit.net.packet.Packet.Point.class, ru.solverit.net.packet.Packet.Point.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<Move> PARSER =
-        new com.google.protobuf.AbstractParser<Move>() {
-      public Move parsePartialFrom(
+    public static com.google.protobuf.Parser<Point> PARSER =
+        new com.google.protobuf.AbstractParser<Point>() {
+      public Point parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Move(input, extensionRegistry);
+        return new Point(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Move> getParserForType() {
+    public com.google.protobuf.Parser<Point> getParserForType() {
       return PARSER;
     }
 
@@ -1937,53 +2250,53 @@ public final class Packet {
       return super.writeReplace();
     }
 
-    public static ru.solverit.net.packet.Packet.Move parseFrom(
+    public static ru.solverit.net.packet.Packet.Point parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ru.solverit.net.packet.Packet.Move parseFrom(
+    public static ru.solverit.net.packet.Packet.Point parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ru.solverit.net.packet.Packet.Move parseFrom(byte[] data)
+    public static ru.solverit.net.packet.Packet.Point parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ru.solverit.net.packet.Packet.Move parseFrom(
+    public static ru.solverit.net.packet.Packet.Point parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ru.solverit.net.packet.Packet.Move parseFrom(java.io.InputStream input)
+    public static ru.solverit.net.packet.Packet.Point parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static ru.solverit.net.packet.Packet.Move parseFrom(
+    public static ru.solverit.net.packet.Packet.Point parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static ru.solverit.net.packet.Packet.Move parseDelimitedFrom(java.io.InputStream input)
+    public static ru.solverit.net.packet.Packet.Point parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static ru.solverit.net.packet.Packet.Move parseDelimitedFrom(
+    public static ru.solverit.net.packet.Packet.Point parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static ru.solverit.net.packet.Packet.Move parseFrom(
+    public static ru.solverit.net.packet.Packet.Point parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static ru.solverit.net.packet.Packet.Move parseFrom(
+    public static ru.solverit.net.packet.Packet.Point parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1992,7 +2305,7 @@ public final class Packet {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(ru.solverit.net.packet.Packet.Move prototype) {
+    public static Builder newBuilder(ru.solverit.net.packet.Packet.Point prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -2004,25 +2317,25 @@ public final class Packet {
       return builder;
     }
     /**
-     * Protobuf type {@code ru.solverit.net.packet.Move}
+     * Protobuf type {@code ru.solverit.net.packet.Point}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ru.solverit.net.packet.Move)
-        ru.solverit.net.packet.Packet.MoveOrBuilder {
+        // @@protoc_insertion_point(builder_implements:ru.solverit.net.packet.Point)
+        ru.solverit.net.packet.Packet.PointOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Move_descriptor;
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Point_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Move_fieldAccessorTable
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Point_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                ru.solverit.net.packet.Packet.Move.class, ru.solverit.net.packet.Packet.Move.Builder.class);
+                ru.solverit.net.packet.Packet.Point.class, ru.solverit.net.packet.Packet.Point.Builder.class);
       }
 
-      // Construct using ru.solverit.net.packet.Packet.Move.newBuilder()
+      // Construct using ru.solverit.net.packet.Packet.Point.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2057,23 +2370,23 @@ public final class Packet {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Move_descriptor;
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Point_descriptor;
       }
 
-      public ru.solverit.net.packet.Packet.Move getDefaultInstanceForType() {
-        return ru.solverit.net.packet.Packet.Move.getDefaultInstance();
+      public ru.solverit.net.packet.Packet.Point getDefaultInstanceForType() {
+        return ru.solverit.net.packet.Packet.Point.getDefaultInstance();
       }
 
-      public ru.solverit.net.packet.Packet.Move build() {
-        ru.solverit.net.packet.Packet.Move result = buildPartial();
+      public ru.solverit.net.packet.Packet.Point build() {
+        ru.solverit.net.packet.Packet.Point result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public ru.solverit.net.packet.Packet.Move buildPartial() {
-        ru.solverit.net.packet.Packet.Move result = new ru.solverit.net.packet.Packet.Move(this);
+      public ru.solverit.net.packet.Packet.Point buildPartial() {
+        ru.solverit.net.packet.Packet.Point result = new ru.solverit.net.packet.Packet.Point(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -2094,16 +2407,16 @@ public final class Packet {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof ru.solverit.net.packet.Packet.Move) {
-          return mergeFrom((ru.solverit.net.packet.Packet.Move)other);
+        if (other instanceof ru.solverit.net.packet.Packet.Point) {
+          return mergeFrom((ru.solverit.net.packet.Packet.Point)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(ru.solverit.net.packet.Packet.Move other) {
-        if (other == ru.solverit.net.packet.Packet.Move.getDefaultInstance()) return this;
+      public Builder mergeFrom(ru.solverit.net.packet.Packet.Point other) {
+        if (other == ru.solverit.net.packet.Packet.Point.getDefaultInstance()) return this;
         if (other.hasId()) {
           setId(other.getId());
         }
@@ -2137,11 +2450,11 @@ public final class Packet {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        ru.solverit.net.packet.Packet.Move parsedMessage = null;
+        ru.solverit.net.packet.Packet.Point parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (ru.solverit.net.packet.Packet.Move) e.getUnfinishedMessage();
+          parsedMessage = (ru.solverit.net.packet.Packet.Point) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -2248,6 +2561,694 @@ public final class Packet {
         return this;
       }
 
+      // @@protoc_insertion_point(builder_scope:ru.solverit.net.packet.Point)
+    }
+
+    static {
+      defaultInstance = new Point(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:ru.solverit.net.packet.Point)
+  }
+
+  public interface MoveOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ru.solverit.net.packet.Move)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+     */
+    java.util.List<ru.solverit.net.packet.Packet.Point> 
+        getPointList();
+    /**
+     * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+     */
+    ru.solverit.net.packet.Packet.Point getPoint(int index);
+    /**
+     * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+     */
+    int getPointCount();
+    /**
+     * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+     */
+    java.util.List<? extends ru.solverit.net.packet.Packet.PointOrBuilder> 
+        getPointOrBuilderList();
+    /**
+     * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+     */
+    ru.solverit.net.packet.Packet.PointOrBuilder getPointOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code ru.solverit.net.packet.Move}
+   */
+  public static final class Move extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ru.solverit.net.packet.Move)
+      MoveOrBuilder {
+    // Use Move.newBuilder() to construct.
+    private Move(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private Move(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Move defaultInstance;
+    public static Move getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public Move getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Move(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                point_ = new java.util.ArrayList<ru.solverit.net.packet.Packet.Point>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              point_.add(input.readMessage(ru.solverit.net.packet.Packet.Point.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          point_ = java.util.Collections.unmodifiableList(point_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Move_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Move_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              ru.solverit.net.packet.Packet.Move.class, ru.solverit.net.packet.Packet.Move.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Move> PARSER =
+        new com.google.protobuf.AbstractParser<Move>() {
+      public Move parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Move(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Move> getParserForType() {
+      return PARSER;
+    }
+
+    public static final int POINT_FIELD_NUMBER = 1;
+    private java.util.List<ru.solverit.net.packet.Packet.Point> point_;
+    /**
+     * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+     */
+    public java.util.List<ru.solverit.net.packet.Packet.Point> getPointList() {
+      return point_;
+    }
+    /**
+     * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+     */
+    public java.util.List<? extends ru.solverit.net.packet.Packet.PointOrBuilder> 
+        getPointOrBuilderList() {
+      return point_;
+    }
+    /**
+     * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+     */
+    public int getPointCount() {
+      return point_.size();
+    }
+    /**
+     * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+     */
+    public ru.solverit.net.packet.Packet.Point getPoint(int index) {
+      return point_.get(index);
+    }
+    /**
+     * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+     */
+    public ru.solverit.net.packet.Packet.PointOrBuilder getPointOrBuilder(
+        int index) {
+      return point_.get(index);
+    }
+
+    private void initFields() {
+      point_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      for (int i = 0; i < getPointCount(); i++) {
+        if (!getPoint(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < point_.size(); i++) {
+        output.writeMessage(1, point_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < point_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, point_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static ru.solverit.net.packet.Packet.Move parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static ru.solverit.net.packet.Packet.Move parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.Move parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static ru.solverit.net.packet.Packet.Move parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.Move parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static ru.solverit.net.packet.Packet.Move parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.Move parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static ru.solverit.net.packet.Packet.Move parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static ru.solverit.net.packet.Packet.Move parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static ru.solverit.net.packet.Packet.Move parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(ru.solverit.net.packet.Packet.Move prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ru.solverit.net.packet.Move}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ru.solverit.net.packet.Move)
+        ru.solverit.net.packet.Packet.MoveOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Move_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Move_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                ru.solverit.net.packet.Packet.Move.class, ru.solverit.net.packet.Packet.Move.Builder.class);
+      }
+
+      // Construct using ru.solverit.net.packet.Packet.Move.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getPointFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (pointBuilder_ == null) {
+          point_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          pointBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return ru.solverit.net.packet.Packet.internal_static_ru_solverit_net_packet_Move_descriptor;
+      }
+
+      public ru.solverit.net.packet.Packet.Move getDefaultInstanceForType() {
+        return ru.solverit.net.packet.Packet.Move.getDefaultInstance();
+      }
+
+      public ru.solverit.net.packet.Packet.Move build() {
+        ru.solverit.net.packet.Packet.Move result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public ru.solverit.net.packet.Packet.Move buildPartial() {
+        ru.solverit.net.packet.Packet.Move result = new ru.solverit.net.packet.Packet.Move(this);
+        int from_bitField0_ = bitField0_;
+        if (pointBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            point_ = java.util.Collections.unmodifiableList(point_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.point_ = point_;
+        } else {
+          result.point_ = pointBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof ru.solverit.net.packet.Packet.Move) {
+          return mergeFrom((ru.solverit.net.packet.Packet.Move)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(ru.solverit.net.packet.Packet.Move other) {
+        if (other == ru.solverit.net.packet.Packet.Move.getDefaultInstance()) return this;
+        if (pointBuilder_ == null) {
+          if (!other.point_.isEmpty()) {
+            if (point_.isEmpty()) {
+              point_ = other.point_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensurePointIsMutable();
+              point_.addAll(other.point_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.point_.isEmpty()) {
+            if (pointBuilder_.isEmpty()) {
+              pointBuilder_.dispose();
+              pointBuilder_ = null;
+              point_ = other.point_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              pointBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getPointFieldBuilder() : null;
+            } else {
+              pointBuilder_.addAllMessages(other.point_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getPointCount(); i++) {
+          if (!getPoint(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        ru.solverit.net.packet.Packet.Move parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (ru.solverit.net.packet.Packet.Move) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<ru.solverit.net.packet.Packet.Point> point_ =
+        java.util.Collections.emptyList();
+      private void ensurePointIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          point_ = new java.util.ArrayList<ru.solverit.net.packet.Packet.Point>(point_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          ru.solverit.net.packet.Packet.Point, ru.solverit.net.packet.Packet.Point.Builder, ru.solverit.net.packet.Packet.PointOrBuilder> pointBuilder_;
+
+      /**
+       * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+       */
+      public java.util.List<ru.solverit.net.packet.Packet.Point> getPointList() {
+        if (pointBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(point_);
+        } else {
+          return pointBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+       */
+      public int getPointCount() {
+        if (pointBuilder_ == null) {
+          return point_.size();
+        } else {
+          return pointBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+       */
+      public ru.solverit.net.packet.Packet.Point getPoint(int index) {
+        if (pointBuilder_ == null) {
+          return point_.get(index);
+        } else {
+          return pointBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+       */
+      public Builder setPoint(
+          int index, ru.solverit.net.packet.Packet.Point value) {
+        if (pointBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePointIsMutable();
+          point_.set(index, value);
+          onChanged();
+        } else {
+          pointBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+       */
+      public Builder setPoint(
+          int index, ru.solverit.net.packet.Packet.Point.Builder builderForValue) {
+        if (pointBuilder_ == null) {
+          ensurePointIsMutable();
+          point_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          pointBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+       */
+      public Builder addPoint(ru.solverit.net.packet.Packet.Point value) {
+        if (pointBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePointIsMutable();
+          point_.add(value);
+          onChanged();
+        } else {
+          pointBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+       */
+      public Builder addPoint(
+          int index, ru.solverit.net.packet.Packet.Point value) {
+        if (pointBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePointIsMutable();
+          point_.add(index, value);
+          onChanged();
+        } else {
+          pointBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+       */
+      public Builder addPoint(
+          ru.solverit.net.packet.Packet.Point.Builder builderForValue) {
+        if (pointBuilder_ == null) {
+          ensurePointIsMutable();
+          point_.add(builderForValue.build());
+          onChanged();
+        } else {
+          pointBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+       */
+      public Builder addPoint(
+          int index, ru.solverit.net.packet.Packet.Point.Builder builderForValue) {
+        if (pointBuilder_ == null) {
+          ensurePointIsMutable();
+          point_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          pointBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+       */
+      public Builder addAllPoint(
+          java.lang.Iterable<? extends ru.solverit.net.packet.Packet.Point> values) {
+        if (pointBuilder_ == null) {
+          ensurePointIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, point_);
+          onChanged();
+        } else {
+          pointBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+       */
+      public Builder clearPoint() {
+        if (pointBuilder_ == null) {
+          point_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          pointBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+       */
+      public Builder removePoint(int index) {
+        if (pointBuilder_ == null) {
+          ensurePointIsMutable();
+          point_.remove(index);
+          onChanged();
+        } else {
+          pointBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+       */
+      public ru.solverit.net.packet.Packet.Point.Builder getPointBuilder(
+          int index) {
+        return getPointFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+       */
+      public ru.solverit.net.packet.Packet.PointOrBuilder getPointOrBuilder(
+          int index) {
+        if (pointBuilder_ == null) {
+          return point_.get(index);  } else {
+          return pointBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+       */
+      public java.util.List<? extends ru.solverit.net.packet.Packet.PointOrBuilder> 
+           getPointOrBuilderList() {
+        if (pointBuilder_ != null) {
+          return pointBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(point_);
+        }
+      }
+      /**
+       * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+       */
+      public ru.solverit.net.packet.Packet.Point.Builder addPointBuilder() {
+        return getPointFieldBuilder().addBuilder(
+            ru.solverit.net.packet.Packet.Point.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+       */
+      public ru.solverit.net.packet.Packet.Point.Builder addPointBuilder(
+          int index) {
+        return getPointFieldBuilder().addBuilder(
+            index, ru.solverit.net.packet.Packet.Point.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .ru.solverit.net.packet.Point point = 1;</code>
+       */
+      public java.util.List<ru.solverit.net.packet.Packet.Point.Builder> 
+           getPointBuilderList() {
+        return getPointFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          ru.solverit.net.packet.Packet.Point, ru.solverit.net.packet.Packet.Point.Builder, ru.solverit.net.packet.Packet.PointOrBuilder> 
+          getPointFieldBuilder() {
+        if (pointBuilder_ == null) {
+          pointBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              ru.solverit.net.packet.Packet.Point, ru.solverit.net.packet.Packet.Point.Builder, ru.solverit.net.packet.Packet.PointOrBuilder>(
+                  point_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          point_ = null;
+        }
+        return pointBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:ru.solverit.net.packet.Move)
     }
 
@@ -2275,6 +3276,16 @@ public final class Packet {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ru_solverit_net_packet_LoginResp_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ru_solverit_net_packet_Join_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ru_solverit_net_packet_Join_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ru_solverit_net_packet_Point_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ru_solverit_net_packet_Point_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ru_solverit_net_packet_Move_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -2291,9 +3302,11 @@ public final class Packet {
       "\n\014packet.proto\022\026ru.solverit.net.packet\"4" +
       "\n\tPacketMSG\022\014\n\004ping\030\001 \001(\010\022\013\n\003cmd\030\002 \001(\005\022\014" +
       "\n\004data\030\003 \001(\014\"#\n\005Login\022\014\n\004name\030\001 \002(\t\022\014\n\004p" +
-      "ass\030\002 \002(\t\"\027\n\tLoginResp\022\n\n\002id\030\001 \002(\003\"(\n\004Mo" +
-      "ve\022\n\n\002id\030\001 \002(\003\022\t\n\001x\030\002 \002(\005\022\t\n\001y\030\003 \002(\005B \n\026" +
-      "ru.solverit.net.packetB\006Packet"
+      "ass\030\002 \002(\t\"\027\n\tLoginResp\022\n\n\002id\030\001 \002(\003\"\006\n\004Jo" +
+      "in\")\n\005Point\022\n\n\002id\030\001 \002(\003\022\t\n\001x\030\002 \002(\005\022\t\n\001y\030" +
+      "\003 \002(\005\"4\n\004Move\022,\n\005point\030\001 \003(\0132\035.ru.solver" +
+      "it.net.packet.PointB \n\026ru.solverit.net.p" +
+      "acketB\006Packet"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2325,12 +3338,24 @@ public final class Packet {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ru_solverit_net_packet_LoginResp_descriptor,
         new java.lang.String[] { "Id", });
-    internal_static_ru_solverit_net_packet_Move_descriptor =
+    internal_static_ru_solverit_net_packet_Join_descriptor =
       getDescriptor().getMessageTypes().get(3);
+    internal_static_ru_solverit_net_packet_Join_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ru_solverit_net_packet_Join_descriptor,
+        new java.lang.String[] { });
+    internal_static_ru_solverit_net_packet_Point_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_ru_solverit_net_packet_Point_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ru_solverit_net_packet_Point_descriptor,
+        new java.lang.String[] { "Id", "X", "Y", });
+    internal_static_ru_solverit_net_packet_Move_descriptor =
+      getDescriptor().getMessageTypes().get(5);
     internal_static_ru_solverit_net_packet_Move_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ru_solverit_net_packet_Move_descriptor,
-        new java.lang.String[] { "Id", "X", "Y", });
+        new java.lang.String[] { "Point", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -40,7 +40,7 @@ public class Main extends Sprite {
     private var _groundMaterial:TextureMaterial;
 
     //scene objects
-    private var _ground:Mesh;
+    private var _ground: Mesh;
     private var _player: Tank;
 
     //navigation variables
@@ -110,6 +110,8 @@ public class Main extends Sprite {
         stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
         stage.addEventListener(Event.RESIZE, onResize);
         onResize();
+
+        net.main = this;
     }
 
     /**

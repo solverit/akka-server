@@ -9,12 +9,16 @@ import com.awar.ags.connection.TransportType;
 import com.awar.ags.engine.AgsEngine;
 import com.awar.ags.engine.Server;
 
+import ru.solverit.net.packet.Join;
+
 import ru.solverit.net.packet.Login;
 import ru.solverit.net.packet.LoginResp;
 
 public class NetService
 {
     private var ags: AgsEngine;
+
+    public var main: Main;
 
     private var _name: String;
     private var _pass: String;
@@ -60,6 +64,13 @@ public class NetService
         {
             var lr: LoginResp = new LoginResp();
             lr.mergeFrom( e.Data );
+
+            join();
+        }
+
+        if( e.Cmd == CmdType.Move )
+        {
+
         }
     }
 
@@ -71,6 +82,18 @@ public class NetService
         var lr: Login = new Login();
         lr.name = login;
         lr.pass = pass;
+
+        lr.writeTo( packet.Data );
+
+        ags.send( packet );
+    }
+
+    public function join(): void
+    {
+        var packet: Packet = new Packet();
+        packet.Cmd = CmdType.Join;
+
+        var lr: Join = new Join();
 
         lr.writeTo( packet.Data );
 
