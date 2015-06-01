@@ -18,7 +18,9 @@ import flash.geom.*;
 import flash.ui.Keyboard;
 import flash.utils.*;
 
-[SWF(backgroundColor="#000000", frameRate="60", width="1280", height="800")]
+import ru.solverit.net.packet.Move;
+
+[SWF(backgroundColor="#000000", frameRate="30", width="1280", height="800")]
 public class Main extends Sprite {
 
     public var net: NetService = new NetService();
@@ -42,6 +44,8 @@ public class Main extends Sprite {
     //scene objects
     private var _ground: Mesh;
     private var _player: Tank;
+    public var move: Move;
+    public var enemys: Vector.<Tank> = new Vector.<Tank>();
 
     //navigation variables
     private var _move:Boolean = false;
@@ -88,16 +92,7 @@ public class Main extends Sprite {
         _view.scene.addChild(_ground);
 
         //setup player
-        _player = new Tank();
-        _player.material.shadowMethod = new FilteredShadowMapMethod(_light);
-//        _player.material.shadowMethod.epsilon = 0.2;
-//        _player.material.lightPicker = _lightPicker;
-        _player.material.specular = 0;
-        _player.position = new Vector3D(0 , 0, 100);
-        _view.scene.addChild(_player);
 
-        //setup controller to be used on the camera
-        _cameraController = new HoverController(_view.camera, _player, 45, 20, 100, 10);
 
         //add stats panel
         addChild(new AwayStats(_view));
@@ -113,6 +108,56 @@ public class Main extends Sprite {
 
         net.main = this;
     }
+
+    public function addPlayer(id: Number):void
+    {
+        _player = new Tank();
+        _player.pid = id;
+        _player.material.shadowMethod = new FilteredShadowMapMethod(_light);
+//        _player.material.shadowMethod.epsilon = 0.2;
+//        _player.material.lightPicker = _lightPicker;
+        _player.material.specular = 0;
+        _player.position = new Vector3D(0 , 0, 100);
+        _view.scene.addChild(_player);
+
+        //setup controller to be used on the camera
+        _cameraController = new HoverController(_view.camera, _player, 45, 20, 100, 10);
+    }
+
+    public function moveEnemy(move: Move):void
+    {
+        for (var i:int = 0; i < move.point.length; i++)
+        {
+            var p:ru.solverit.net.packet.Point = move.point[i];
+            var e: Tank;
+            for( var j: int = 0; j < enemys.length; j++ )
+            {
+                if(p.id.toNumber() == enemys[j].pid) {
+                    e = enemys[j];
+                }
+            }
+
+            if(p.id.toNumber() != _player.pid) {
+                if(e) {
+                    e.x = p.x;
+                    e.z = p.y;
+                } else {
+                    addEnemy(p.id.toNumber(), p.x, p.y);
+                }
+            }
+        }
+    }
+
+    public function addEnemy(id: Number, x: Number, y: Number):void
+    {
+        var tank: Tank = new Tank();
+        tank.pid = id;
+        tank.material.specular = 0;
+        tank.position = new Vector3D(x , 0, y);
+        enemys.push(tank)
+        _view.scene.addChild(tank);
+    }
+
 
     /**
      * Key down listener for camera control
@@ -157,8 +202,11 @@ public class Main extends Sprite {
             case Keyboard.D:
                 strafeAcceleration = 0;
                 break;
-            case Keyboard.L:
+            case Keyboard.K:
                 net.connect("Tester1", "test");
+                break;
+            case Keyboard.L:
+                net.connect("Tester2", "test");
                 break;
         }
     }
@@ -189,6 +237,15 @@ public class Main extends Sprite {
             _player.x -= strafeSpeed; //*Math.sin(_cameraController.panAngle*MathConsts.DEGREES_TO_RADIANS);
         }
 
+        if(move) {
+            moveEnemy(move);
+        }
+
+        if(_player) {
+            net.move(_player);
+        }
+
+
         _view.render();
     }
 
@@ -197,12 +254,14 @@ public class Main extends Sprite {
      */
     private function onMouseDown(event:MouseEvent):void
     {
-        _lastPanAngle = _cameraController.panAngle;
-        _lastTiltAngle = _cameraController.tiltAngle;
-        _lastMouseX = stage.mouseX;
-        _lastMouseY = stage.mouseY;
-        _move = true;
-        stage.addEventListener(Event.MOUSE_LEAVE, onStageMouseLeave);
+        if(_cameraController) {
+            _lastPanAngle = _cameraController.panAngle;
+            _lastTiltAngle = _cameraController.tiltAngle;
+            _lastMouseX = stage.mouseX;
+            _lastMouseY = stage.mouseY;
+            _move = true;
+            stage.addEventListener(Event.MOUSE_LEAVE, onStageMouseLeave);
+        }
     }
 
     /**

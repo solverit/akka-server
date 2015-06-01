@@ -16,6 +16,7 @@ public class Tank extends ObjectContainer3D
 
     public var material : TextureMaterial;
 
+    public var pid: Number;
 
     public function Tank()
     {

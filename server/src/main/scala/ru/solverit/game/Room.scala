@@ -1,8 +1,10 @@
 package ru.solverit.game
 
 import akka.actor.{Cancellable, ActorRef, ActorLogging, Actor}
+import ru.solverit.core.Cmd
 import ru.solverit.domain.{Player}
 import ru.solverit.net.packet.Packet.{Move, Login, PacketMSG, Point}
+import ru.solverit.tcpfront.Send
 import scala.concurrent.duration._
 import scala.collection.mutable
 
@@ -40,18 +42,19 @@ class Room(val id: Long) extends Actor with ActorLogging {
   }
 
 
-  def getPoint(p: Player) = {
+  def getPoint(move: Move.Builder, p: Player) = {
     val point: Point.Builder = Point.newBuilder()
     point.setId(p.id)
     point.setX(p.point.x)
     point.setY(p.point.y)
-    point.build().toByteArray
+    move.addPoint(point)
   }
 
   // ----- handles -----
   def calcTick() = {
-    val points = players.keySet.map(p => getPoint(p) )
-    players.values.map(s => s ! points)
+    val move = Move.newBuilder()
+    players.keySet.map(p => getPoint(move, p))
+    players.values.map(s => s ! Send(Cmd.Move, move.build().toByteArray))
   }
 
   def handleJoin(task: JoinRoom) = {
