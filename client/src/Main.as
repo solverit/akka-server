@@ -202,11 +202,14 @@ public class Main extends Sprite {
             case Keyboard.D:
                 strafeAcceleration = 0;
                 break;
-            case Keyboard.K:
+            case Keyboard.NUMBER_1:
                 net.connect("Tester1", "test");
                 break;
-            case Keyboard.L:
+            case Keyboard.NUMBER_2:
                 net.connect("Tester2", "test");
+                break;
+            case Keyboard.NUMBER_3:
+                net.connect("Tester3", "test");
                 break;
         }
     }

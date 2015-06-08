@@ -36,8 +36,8 @@ class AkkaNetServerTCP(address: String, port: Int) extends Actor with ActorLoggi
       val sessact = Props(new Session(idCounter, sender, init, remote, local))
       val sess = context.actorOf(sessact, remote.toString.replace("/", ""))
 
-      val pipeline = context.actorOf(TcpPipelineHandler.props(init, sender, sess))
+      val handler = context.actorOf(TcpPipelineHandler.props(init, sender, sess))
 
-      sender ! Register(pipeline)
+      sender ! Register(handler)
   }
 }
