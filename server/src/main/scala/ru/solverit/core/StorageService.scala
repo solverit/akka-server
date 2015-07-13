@@ -4,12 +4,8 @@ import akka.actor.{ActorLogging, Actor, ActorRef}
 import ru.solverit.domain.{Point, Player}
 import ru.solverit.net.packet.Packet.{Login, PacketMSG}
 
-
-// -----
-case class GetPlayerByName(session: ActorRef, comm: PacketMSG)
-case class SomePlayer(session: ActorRef, comm: PacketMSG, player: Player)
-
 class StorageService extends Actor with ActorLogging {
+  import StorageService._
 
   val players = List(
                       new Player(1L, "Tester1", "test", Point(0, 0)),
@@ -42,8 +38,15 @@ class StorageService extends Actor with ActorLogging {
     val player = players.filter(p => p.name.equals(cmd.getName) && p.pass.equals(cmd.getPass)).head
     player match {
       case Player(_,_,_,_) => sender ! SomePlayer(task.session, task.comm, player)
-      case _ => sender ! AuthenticatedFailed(task.session, task.comm)
+      case _ => sender ! AuthService.AuthenticatedFailed(task.session, task.comm)
     }
 
   }
+}
+
+object StorageService {
+
+  // ----- API -----
+  case class GetPlayerByName(session: ActorRef, comm: PacketMSG)
+  case class SomePlayer(session: ActorRef, comm: PacketMSG, player: Player)
 }

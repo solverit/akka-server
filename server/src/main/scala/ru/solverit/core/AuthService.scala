@@ -1,15 +1,13 @@
 package ru.solverit.core
 
-import akka.actor.{ActorLogging, Actor, ActorRef}
-import ru.solverit.domain.Player
+import akka.actor.{Actor, ActorLogging, ActorRef}
+import ru.solverit.core.StorageService.SomePlayer
 import ru.solverit.net.packet.Packet.{LoginResp, PacketMSG}
-import ru.solverit.tcpfront.Send
+import ru.solverit.tcpfront.Session
 
-// -----
-case class Authenticate(session: ActorRef, comm: PacketMSG)
-case class AuthenticatedFailed(session: ActorRef, comm: PacketMSG)
 
 class AuthService extends Actor with ActorLogging {
+  import AuthService._
 
   // -----
   val storageService = context.actorSelection("akka://server/user/storage")
@@ -37,17 +35,24 @@ class AuthService extends Actor with ActorLogging {
 
   // ----- handles -----
   def handleAuth(task: Authenticate) = {
-    storageService ! GetPlayerByName(task.session, task.comm)
+    storageService ! StorageService.GetPlayerByName(task.session, task.comm)
   }
 
   def handleAuthenticated(task: SomePlayer) = {
     val login: LoginResp.Builder = LoginResp.newBuilder()
     login.setId(task.player.id)
-    task.session ! Send(Cmd.AuthResp, login.build().toByteArray)
+    task.session ! Session.Send(Cmd.AuthResp, login.build().toByteArray)
     gameService ! task
   }
 
   def handleFailed(task: AuthenticatedFailed) = {
-    task.session ! Send(Cmd.AuthErr, Array[Byte]())
+    task.session ! Session.Send(Cmd.AuthErr, Array[Byte]())
   }
+}
+
+object AuthService {
+
+  // ----- API -----
+  case class Authenticate(session: ActorRef, comm: PacketMSG)
+  case class AuthenticatedFailed(session: ActorRef, comm: PacketMSG)
 }

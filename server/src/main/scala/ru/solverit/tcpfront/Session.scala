@@ -3,20 +3,16 @@ package ru.solverit.tcpfront
 import java.net.InetSocketAddress
 import java.nio.ByteBuffer
 
-import akka.actor.{ActorLogging, Cancellable, Actor, ActorRef}
+import akka.actor._
 import akka.io.Tcp
 import akka.io.Tcp.Write
-import akka.io.TcpPipelineHandler.{WithinActorContext, Init}
+import akka.io.TcpPipelineHandler.{Init, WithinActorContext}
 import akka.util.ByteString
-import ru.solverit.core.{Cmd, Msg, CommandTask}
+import ru.solverit.core.{Cmd, Msg, TaskService}
 import ru.solverit.net.packet.Packet.PacketMSG
 
 import scala.concurrent.duration._
 
-// -----
-case class Send(cmd: Msg, data: Array[Byte])
-
-case object Heartbeat
 
 // -----
 class Session(
@@ -27,13 +23,13 @@ class Session(
                local: InetSocketAddress
                ) extends Actor with ActorLogging {
 
+  import Session._
   import context._
 
   // -----
   val taskService = context.actorSelection("akka://server/user/task")
 
   // ----- heartbeat -----
-  private val period = 10.seconds
   private var scheduler: Cancellable = _
 
   // ----- actor -----
@@ -67,7 +63,7 @@ class Session(
   def receiveData(data: ByteString) {
     val comm: PacketMSG = PacketMSG.parseFrom( data.toArray )
 
-    taskService ! CommandTask( self, comm )
+    taskService ! TaskService.CommandTask( self, comm )
   }
 
   def sendData(cmd: Msg, data: Array[Byte]) {
@@ -97,4 +93,22 @@ class Session(
 
   // ----- override -----
   override def toString = "{ Id: %d }".format(id)
+}
+
+object Session {
+
+  // ----- heartbeat -----
+  val period = 10.seconds
+
+  // safe constructor
+  def props(id: Long, connect: ActorRef, init: Init[WithinActorContext, ByteString, ByteString],
+            remote: InetSocketAddress, local: InetSocketAddress) = Props(
+                new Session(id, connect, init, remote, local)
+              )
+
+  // ----- API -----
+  // Sending message to client
+  case class Send(cmd: Msg, data: Array[Byte])
+  // Checking client connection for life
+  case object Heartbeat
 }

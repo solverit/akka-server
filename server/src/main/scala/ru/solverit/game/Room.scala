@@ -1,24 +1,21 @@
 package ru.solverit.game
 
-import akka.actor.{Cancellable, ActorRef, ActorLogging, Actor}
+import akka.actor._
 import ru.solverit.core.Cmd
-import ru.solverit.domain.{Player}
-import ru.solverit.net.packet.Packet.{Move, Login, PacketMSG, Point}
-import ru.solverit.tcpfront.Send
-import scala.concurrent.duration._
+import ru.solverit.domain.Player
+import ru.solverit.net.packet.Packet.{Move, PacketMSG, Point}
+import ru.solverit.tcpfront.Session
+
 import scala.collection.mutable
-
-case object Tick
-
-case class JoinRoom(session: ActorRef, player: Player)
-case class PlayerMove(session: ActorRef, comm: PacketMSG)
+import scala.concurrent.duration._
 
 class Room(val id: Long) extends Actor with ActorLogging {
+  import Room._
   import context._
+
   val players: mutable.HashMap[Player, ActorRef] = mutable.HashMap.empty[Player, ActorRef]
 
-  // ----- heartbeat -----
-  private val period = 100.millisecond
+  // ----- game tick -----
   private var scheduler: Cancellable = _
 
   // ----- actor -----
@@ -54,7 +51,7 @@ class Room(val id: Long) extends Actor with ActorLogging {
   def calcTick() = {
     val move = Move.newBuilder()
     players.keySet.map(p => getPoint(move, p))
-    players.values.map(s => s ! Send(Cmd.Move, move.build().toByteArray))
+    players.values.map(s => s ! Session.Send(Cmd.Move, move.build().toByteArray))
   }
 
   def handleJoin(task: JoinRoom) = {
@@ -70,4 +67,19 @@ class Room(val id: Long) extends Actor with ActorLogging {
       p.point.y = move.getY
     } )
   }
+}
+
+object Room {
+
+  // ----- game tick -----
+  private val period = 100.millisecond
+
+  // ----- API -----
+  case object Tick
+
+  case class JoinRoom(session: ActorRef, player: Player)
+  case class PlayerMove(session: ActorRef, comm: PacketMSG)
+
+  // safe constructor
+  def props(id: Long) = Props(new Room(id))
 }

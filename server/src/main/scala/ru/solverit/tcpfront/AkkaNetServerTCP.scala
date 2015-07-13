@@ -2,11 +2,10 @@ package ru.solverit.tcpfront
 
 import java.net.InetSocketAddress
 import java.nio.ByteOrder
-import java.util.concurrent.atomic.AtomicLong
 
-import akka.actor.{ActorLogging, Props, Actor}
-import akka.io._
+import akka.actor.{Actor, ActorLogging, Props}
 import akka.io.Tcp._
+import akka.io._
 
 
 class AkkaNetServerTCP(address: String, port: Int) extends Actor with ActorLogging {
@@ -21,23 +20,35 @@ class AkkaNetServerTCP(address: String, port: Int) extends Actor with ActorLoggi
   }
 
   def receive = {
-    case b@Bound(localAddress) ⇒
+    case b@Bound(localAddress) =>
     // do some logging or setup ...
 
-    case CommandFailed(_: Bind) ⇒ context stop self
+    case CommandFailed(_: Bind) =>
+      log.info("Command failed tcp server")
+      context stop self
 
-    case c@Connected(remote, local) ⇒
+    case c@Connected(remote, local) =>
       log.info("New incoming tcp connection on server")
-
-      val framer = new LengthFieldFrame(8192, ByteOrder.BIG_ENDIAN, 4, false)
-      val init = TcpPipelineHandler.withLogger(log, framer >> new TcpReadWriteAdapter)
-
-      idCounter += 1
-      val sessact = Props(new Session(idCounter, sender, init, remote, local))
-      val sess = context.actorOf(sessact, remote.toString.replace("/", ""))
-
-      val handler = context.actorOf(TcpPipelineHandler.props(init, sender, sess))
-
-      sender ! Register(handler)
+      createSession(remote, local)
   }
+
+  // ----- handles -----
+  def createSession(remote: InetSocketAddress, local: InetSocketAddress) = {
+    val framer = new LengthFieldFrame(8192, ByteOrder.BIG_ENDIAN, 4, false)
+    val init = TcpPipelineHandler.withLogger(log, framer >> new TcpReadWriteAdapter)
+
+    idCounter += 1
+    val sessionProps = Session.props(idCounter, sender, init, remote, local)
+    val session = context.actorOf(sessionProps, remote.toString.replace("/", ""))
+
+    val pipeline = context.actorOf(TcpPipelineHandler.props(init, sender, session))
+
+    sender ! Register(pipeline)
+  }
+}
+
+object AkkaNetServerTCP {
+
+  // safe constructor
+  def props(address: String, port: Int) = Props(new AkkaNetServerTCP(address, port))
 }

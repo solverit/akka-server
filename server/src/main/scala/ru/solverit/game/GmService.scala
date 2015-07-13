@@ -1,15 +1,14 @@
 package ru.solverit.game
 
-import akka.actor.{Props, ActorRef, ActorLogging, Actor}
-import ru.solverit.core.{Cmd, SomePlayer}
+import akka.actor.{Actor, ActorLogging, ActorRef}
+import ru.solverit.core.StorageService.SomePlayer
 import ru.solverit.domain.Player
+import ru.solverit.game.Room.PlayerMove
 
 import scala.collection.mutable
 
-
-case class JoinGame(session: ActorRef)
-
 class GmService extends Actor with ActorLogging {
+  import GmService._
 
   val players: mutable.HashMap[ActorRef, Player] = mutable.HashMap.empty[ActorRef, Player]
   val rooms: mutable.HashMap[Long, ActorRef] = mutable.HashMap.empty[Long, ActorRef]
@@ -45,7 +44,7 @@ class GmService extends Actor with ActorLogging {
       createRoom()
     }
 
-    rooms.get(1L).get ! JoinRoom(task.session, players.get(task.session).get)
+    rooms.get(1L).get ! Room.JoinRoom(task.session, players.get(task.session).get)
   }
 
   def handleMove(task: PlayerMove) = {
@@ -53,8 +52,14 @@ class GmService extends Actor with ActorLogging {
   }
 
   def createRoom(): ActorRef = {
-    val room = context.actorOf(Props(new Room(idCounter)), "room"+idCounter)
+    val room = context.actorOf(Room.props(idCounter), "room" + idCounter)
     rooms.put(idCounter, room)
     room
   }
+}
+
+object GmService {
+
+  // ----- API -----
+  case class JoinGame(session: ActorRef)
 }
